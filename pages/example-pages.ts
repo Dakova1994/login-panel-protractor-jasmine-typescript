@@ -2,8 +2,8 @@ import { $, $$, browser, promise, ElementFinder, ElementArrayFinder } from 'prot
 
 
 export class HomePage{
-    public url: any;
-    public logedURL: any;
+    public url: string;
+    public logedURL: string;
     public userNameInput: ElementFinder;
     public userPasswordInput: ElementFinder;
     public specialUserNameInput: ElementFinder;
@@ -24,8 +24,7 @@ export class HomePage{
         browser.get(this.url);
     }
 
-    public addUserName(userName){
-        this.userNameInput.click();
+    public addUserName(userName): void {
         this.userNameInput.sendKeys(userName);
     }
     
@@ -33,8 +32,8 @@ export class HomePage{
         this.userPasswordInput.sendKeys(userPassword);
     }
 
-    public addSpecialUserName(){
-        this.specialUserNameInput.sendKeys('Name');
+    public addSpecialUserName(userNickName){
+        this.specialUserNameInput.sendKeys(userNickName);
     }
 
     public login(){
