@@ -1,6 +1,8 @@
 import { Config } from 'protractor';
 import * as JasmineConsoleReporter from 'jasmine-console-reporter';
 
+var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
+
 export let config: Config = {
     baseUrl: 'http://www.way2automation.com/angularjs-protractor/registeration/#/login',
     capabilities: {
@@ -11,13 +13,13 @@ export let config: Config = {
     jasmineNodeOpts: {
         defaultTimeoutInterval: 30000
     },
-    onPrepare: () => {
-        jasmine.getEnv().addReporter(new JasmineConsoleReporter({
-            colors: 1,
-            cleanStack: 1,
-            verbosity: 4,
-            listStyle: 'indent',
-            activity: false
-        }));
-    }
+    onPrepare: function() {
+        jasmine.getEnv().addReporter(
+          new Jasmine2HtmlReporter({
+            savePath: './test/reports/',
+            screenshotsFolder: 'images'
+          })
+        );
+     }
+    
 };
